@@ -2,12 +2,12 @@
 const currentPath = Astro.url.pathname;
 
 const navItems = [
-  { label: "about", href: "/#about" },
-  { label: "experience", href: "/#experience" },
-  { label: "projects", href: "/#projects" },
-  { label: "skills", href: "/#skills" },
-  { label: "blog", href: "/blog" },
-  { label: "contact", href: "/#contact" },
+  { label: "about", href: "/#about", sectionId: "about" },
+  { label: "experience", href: "/#experience", sectionId: "experience" },
+  { label: "projects", href: "/#projects", sectionId: "projects" },
+  { label: "skills", href: "/#skills", sectionId: "skills" },
+  { label: "blog", href: "/blog", sectionId: "blog" },
+  { label: "contact", href: "/#contact", sectionId: "contact" },
 ];
 ---
 
@@ -22,16 +22,19 @@ const navItems = [
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center space-x-1 lg:space-x-3 text-xs" aria-label="Main Navigation">
+      <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-xs" aria-label="Main Navigation">
         {navItems.map((item) => {
-          const isActive = item.href === '/blog' ? currentPath.startsWith('/blog') : (currentPath === '/' && item.href === '/#about');
+          const isInitialActive = item.sectionId === 'blog'
+            ? currentPath.startsWith('/blog')
+            : (currentPath === '/' && item.sectionId === 'about');
           return (
             <a
               href={item.href}
-              class={`px-2.5 py-1 rounded transition-colors duration-150 font-mono ${
-                isActive
-                  ? "text-[#f29e82] bg-[#262637] border border-[#44445f]"
-                  : "text-[#9e958a] hover:text-[#ece2d0] hover:bg-[#1e1e2b]"
+              data-nav-section={item.sectionId}
+              class={`nav-link px-2.5 py-1 rounded transition-all duration-150 font-mono border ${
+                isInitialActive
+                  ? "active-nav text-[#f29e82] bg-[#262637] border-[#44445f]"
+                  : "inactive-nav text-[#9e958a] hover:text-[#ece2d0] hover:bg-[#1e1e2b] border-transparent"
               }`}
             >
               {item.label}
@@ -60,14 +63,24 @@ const navItems = [
 
     <!-- Mobile Dropdown -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-[#2e2e42] py-3 space-y-1">
-      {navItems.map((item) => (
-        <a
-          href={item.href}
-          class="mobile-nav-link block px-3 py-2 text-sm text-[#9e958a] hover:text-[#f29e82] hover:bg-[#1e1e2b] rounded font-mono"
-        >
-          {item.label}
-        </a>
-      ))}
+      {navItems.map((item) => {
+        const isInitialActive = item.sectionId === 'blog'
+          ? currentPath.startsWith('/blog')
+          : (currentPath === '/' && item.sectionId === 'about');
+        return (
+          <a
+            href={item.href}
+            data-nav-section={item.sectionId}
+            class={`mobile-nav-link block px-3 py-2 text-sm rounded font-mono border ${
+              isInitialActive
+                ? "active-nav text-[#f29e82] bg-[#262637] border-[#44445f]"
+                : "inactive-nav text-[#9e958a] hover:text-[#ece2d0] hover:bg-[#1e1e2b] border-transparent"
+            }`}
+          >
+            {item.label}
+          </a>
+        );
+      })}
       <div class="pt-2 border-t border-[#2e2e42]/60 px-3 flex items-center justify-between text-xs text-[#9e958a]">
         <span>SYS: VOID LINUX</span>
         <span class="text-[#8ec07c]">ONLINE</span>
@@ -77,33 +90,118 @@ const navItems = [
 </header>
 
 <script>
-  function setupMobileMenu() {
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
+  function setupNav() {
+    const isHomePage = window.location.pathname === '/' || window.location.pathname === '';
+    const allNavLinks = document.querySelectorAll<HTMLAnchorElement>('[data-nav-section]');
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
     const iconBars = document.getElementById('menu-icon-bars');
     const iconClose = document.getElementById('menu-icon-close');
-    const links = document.querySelectorAll('.mobile-nav-link');
 
-    if (!btn || !menu) return;
+    // Mobile toggle
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.onclick = () => {
+        const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+        mobileBtn.setAttribute('aria-expanded', String(!isExpanded));
+        mobileMenu.classList.toggle('hidden');
+        iconBars?.classList.toggle('hidden');
+        iconClose?.classList.toggle('hidden');
+      };
+    }
 
-    btn.addEventListener('click', () => {
-      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!isExpanded));
-      menu.classList.toggle('hidden');
-      iconBars?.classList.toggle('hidden');
-      iconClose?.classList.toggle('hidden');
+    function applyActiveStyles(activeSectionId: string) {
+      allNavLinks.forEach(link => {
+        const matches = link.dataset.navSection === activeSectionId;
+        if (matches) {
+          link.classList.add('text-[#f29e82]', 'bg-[#262637]', 'border-[#44445f]');
+          link.classList.remove('text-[#9e958a]', 'border-transparent');
+        } else {
+          link.classList.remove('text-[#f29e82]', 'bg-[#262637]', 'border-[#44445f]');
+          link.classList.add('text-[#9e958a]', 'border-transparent');
+        }
+      });
+    }
+
+    if (!isHomePage) {
+      if (window.location.pathname.startsWith('/blog')) {
+        applyActiveStyles('blog');
+      }
+      return;
+    }
+
+    // Single-page ScrollSpy on homepage
+    const sections: HTMLElement[] = [];
+    const sectionIds = ['about', 'experience', 'projects', 'skills', 'contact'];
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) sections.push(el);
     });
 
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.add('hidden');
-        btn.setAttribute('aria-expanded', 'false');
-        iconBars?.classList.remove('hidden');
-        iconClose?.classList.add('hidden');
+    function updateActiveOnScroll() {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+
+      // If near the bottom of the page, activate contact
+      if (scrollY + windowHeight >= documentHeight - 50) {
+        applyActiveStyles('contact');
+        return;
+      }
+
+      let currentId = 'about';
+      const offset = 140; // Navbar height + margin
+
+      for (const section of sections) {
+        const sectionTop = section.offsetTop - offset;
+        const sectionHeight = section.offsetHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          currentId = section.id;
+          break;
+        } else if (scrollY >= sectionTop) {
+          currentId = section.id;
+        }
+      }
+
+      applyActiveStyles(currentId);
+    }
+
+    window.addEventListener('scroll', updateActiveOnScroll, { passive: true });
+    updateActiveOnScroll();
+
+    // Smooth click handler
+    allNavLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.dataset.navSection;
+        if (targetId && targetId !== 'blog') {
+          const targetEl = document.getElementById(targetId);
+          if (targetEl && isHomePage) {
+            e.preventDefault();
+            history.pushState(null, '', `#${targetId}`);
+            const navOffset = 70;
+            const elementPosition = targetEl.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+
+            applyActiveStyles(targetId);
+
+            // Close mobile menu if open
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+              mobileMenu.classList.add('hidden');
+              mobileBtn?.setAttribute('aria-expanded', 'false');
+              iconBars?.classList.remove('hidden');
+              iconClose?.classList.add('hidden');
+            }
+          }
+        }
       });
     });
   }
 
-  setupMobileMenu();
-  document.addEventListener('astro:page-load', setupMobileMenu);
+  setupNav();
+  document.addEventListener('astro:page-load', setupNav);
 </script>

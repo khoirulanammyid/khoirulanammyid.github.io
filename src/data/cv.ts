@@ -75,7 +75,7 @@ export const cvData: CVData = {
     github: "https://github.com/khoirulanammyid",
     website: "https://khoirulanam.my.id",
   },
-  summary: "Infrastructure Engineer and Backend Developer specializing in Void Linux administration, virtualization (Proxmox VE + ZFS), and the Laravel/Vue ecosystem. Experienced in re-architecting enterprise systems, maintaining data integrity during database migrations, and directing open-source system releases. Focused on calm, reliable, and minimal technical solutions.",
+  summary: "Infrastructure Engineer and Backend Developer specializing in Void Linux administration, virtualization (Proxmox VE + ZFS), and the Laravel/Vue ecosystem. Former long-time Arch Linux daily driver with rich experience in operating system rebasing and open-source release cycles. Focused on calm, reliable, and minimal technical solutions.",
   skills: [
     {
       title: "Infrastructure & Virtualization",
@@ -83,7 +83,14 @@ export const cvData: CVData = {
     },
     {
       title: "Systems & Linux Engineering",
-      skills: ["Void Linux (runit, xbps)", "Kernel Tuning", "Debian / Arch", "Libreboot / SeaBIOS", "Wayland (Niri) / Foot"]
+      skills: [
+        "Void Linux (current daily driver)",
+        "Arch Linux (former daily driver)",
+        "Kernel Tuning",
+        "Debian / Fedora",
+        "Libreboot / SeaBIOS",
+        "Wayland (Niri) / Foot"
+      ]
     },
     {
       title: "Programming & Scripting",
@@ -210,7 +217,8 @@ export const cvData: CVData = {
       period: "August 2023 – July 2024",
       type: "volunteer",
       description: [
-        "Initiated and engineered the architectural transition of TeaLinux OS from a Xubuntu base to Arch Linux to streamline performance and package maintainability."
+        "Initiated and engineered the architectural transition of TeaLinux OS from a Xubuntu base to Arch Linux to streamline performance and package maintainability.",
+        "Managed package building (PKGBUILD) pipelines and systemd integration for the rolling release edition."
       ],
       highlight: "Successfully rebased an entire operating system distribution to Arch Linux."
     },
