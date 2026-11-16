@@ -2,26 +2,23 @@
 const currentPath = Astro.url.pathname;
 
 const navItems = [
-  { label: "01 // overview", href: "/#about" },
-  { label: "02 // experience", href: "/#experience" },
-  { label: "03 // projects", href: "/#projects" },
-  { label: "04 // skills", href: "/#skills" },
-  { label: "05 // blog", href: "/blog" },
-  { label: "06 // contact", href: "/#contact" },
+  { label: "about", href: "/#about" },
+  { label: "experience", href: "/#experience" },
+  { label: "projects", href: "/#projects" },
+  { label: "skills", href: "/#skills" },
+  { label: "blog", href: "/blog" },
+  { label: "contact", href: "/#contact" },
 ];
 ---
 
-<header class="sticky top-0 z-40 bg-[#0c0e12]/90 backdrop-blur-md border-b border-[#232b3b] transition-colors">
+<header class="sticky top-0 z-40 bg-[#16161f]/90 backdrop-blur-md border-b border-[#2e2e42] transition-colors">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-14">
-      <!-- Logo / Terminal Prompt -->
-      <a href="/" class="group flex items-center space-x-2 text-sm text-[#e6edf3] font-mono hover:text-[#e5983b] transition-colors">
-        <span class="text-[#e5983b] font-bold">&gt;</span>
-        <span class="tracking-wide">khoirul@srv</span>
-        <span class="text-[#8b949e]">:</span>
-        <span class="text-[#38bdf8]">~</span>
-        <span class="text-[#8b949e]">$</span>
-        <span class="w-2 h-4 bg-[#e5983b] inline-block animate-pulse ml-0.5"></span>
+      <!-- Simple & Clean Brand Identifier -->
+      <a href="/" class="group flex items-center space-x-1.5 text-sm font-mono font-medium text-[#ece2d0] hover:text-[#f29e82] transition-colors">
+        <span class="text-[#e78a4e] select-none">&gt;</span>
+        <span class="tracking-tight">khoirul anam</span>
+        <span class="text-[#7daea3] select-none">_</span>
       </a>
 
       <!-- Desktop Navigation -->
@@ -31,10 +28,10 @@ const navItems = [
           return (
             <a
               href={item.href}
-              class={`px-2.5 py-1 rounded transition-colors duration-150 font-mono tracking-tight ${
+              class={`px-2.5 py-1 rounded transition-colors duration-150 font-mono ${
                 isActive
-                  ? "text-[#e5983b] bg-[#1a202c] border border-[#37435c]"
-                  : "text-[#8b949e] hover:text-[#e6edf3] hover:bg-[#131720]"
+                  ? "text-[#f29e82] bg-[#262637] border border-[#44445f]"
+                  : "text-[#9e958a] hover:text-[#ece2d0] hover:bg-[#1e1e2b]"
               }`}
             >
               {item.label}
@@ -43,17 +40,11 @@ const navItems = [
         })}
       </nav>
 
-      <!-- System Status Indicator (Retro Tag) -->
-      <div class="hidden sm:flex items-center space-x-2 text-[11px] text-[#8b949e] border border-[#232b3b] px-2.5 py-0.5 rounded bg-[#131720]/60">
-        <span class="w-2 h-2 rounded-full bg-[#10b981] animate-ping"></span>
-        <span class="text-[#10b981]">ready</span>
-      </div>
-
       <!-- Mobile Menu Button -->
       <button
         id="mobile-menu-btn"
         type="button"
-        class="md:hidden p-1.5 text-[#8b949e] hover:text-[#e6edf3] hover:bg-[#131720] rounded border border-[#232b3b]"
+        class="md:hidden p-1.5 text-[#9e958a] hover:text-[#ece2d0] hover:bg-[#1e1e2b] rounded border border-[#2e2e42]"
         aria-label="Toggle navigation menu"
         aria-expanded="false"
       >
@@ -68,18 +59,18 @@ const navItems = [
     </div>
 
     <!-- Mobile Dropdown -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-[#232b3b] py-3 space-y-1">
+    <div id="mobile-menu" class="hidden md:hidden border-t border-[#2e2e42] py-3 space-y-1">
       {navItems.map((item) => (
         <a
           href={item.href}
-          class="mobile-nav-link block px-3 py-2 text-sm text-[#8b949e] hover:text-[#e5983b] hover:bg-[#131720] rounded font-mono"
+          class="mobile-nav-link block px-3 py-2 text-sm text-[#9e958a] hover:text-[#f29e82] hover:bg-[#1e1e2b] rounded font-mono"
         >
           {item.label}
         </a>
       ))}
-      <div class="pt-2 border-t border-[#232b3b]/60 px-3 flex items-center justify-between text-xs text-[#8b949e]">
-        <span>STATUS: ACTIVE</span>
-        <span class="text-[#10b981]">SYS: ARCH 6.12</span>
+      <div class="pt-2 border-t border-[#2e2e42]/60 px-3 flex items-center justify-between text-xs text-[#9e958a]">
+        <span>SYS: VOID LINUX</span>
+        <span class="text-[#8ec07c]">ONLINE</span>
       </div>
     </div>
   </div>
@@ -113,7 +104,6 @@ const navItems = [
     });
   }
 
-  // Setup on initial load and view transition page loads
   setupMobileMenu();
   document.addEventListener('astro:page-load', setupMobileMenu);
 </script>

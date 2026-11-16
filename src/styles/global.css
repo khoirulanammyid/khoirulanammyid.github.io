@@ -41,53 +41,59 @@
   --font-mono: 'Fantasque Sans Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --font-serif: 'Newsreader', 'Charter', Georgia, Cambria, 'Times New Roman', Times, serif;
 
-  --color-retro-bg: #0c0e12;
-  --color-retro-surface: #131720;
-  --color-retro-surface-hover: #1a202c;
-  --color-retro-border: #232b3b;
-  --color-retro-border-bright: #37435c;
-  --color-retro-amber: #e5983b;
-  --color-retro-amber-bright: #f59e0b;
-  --color-retro-green: #10b981;
-  --color-retro-cyan: #38bdf8;
-  --color-retro-text: #e6edf3;
-  --color-retro-muted: #8b949e;
-  --color-retro-dim: #4b5563;
+  /* 80s/90s Pastel & Vapor Minimalist Palette */
+  --color-retro-bg: #16161f;
+  --color-retro-surface: #1e1e2b;
+  --color-retro-surface-hover: #262637;
+  --color-retro-border: #2e2e42;
+  --color-retro-border-bright: #44445f;
+
+  /* Pastel accents (sunset peach, vapor lavender, dusk cyan, sage green) */
+  --color-retro-peach: #f29e82;
+  --color-retro-amber: #e78a4e;
+  --color-retro-lavender: #cfa5d8;
+  --color-retro-cyan: #7daea3;
+  --color-retro-green: #8ec07c;
+  --color-retro-pink: #e08b9e;
+
+  /* Warm cream typography */
+  --color-retro-text: #ece2d0;
+  --color-retro-muted: #9e958a;
+  --color-retro-dim: #5c554e;
 }
 
-/* CRT and Retro scanline & grain effects */
 :root {
   color-scheme: dark;
 }
 
 html {
   font-family: var(--font-mono);
-  background-color: #0c0e12;
-  color: #e6edf3;
+  background-color: #16161f;
+  color: #ece2d0;
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Subtle retro scanlines (pure CSS, ultra lightweight) */
+/* Subtle 90s CRT scanlines & vapor ambient */
 .scanlines-overlay {
   pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: 9999;
   background: linear-gradient(
-    rgba(18, 16, 16, 0) 50%, 
-    rgba(0, 0, 0, 0.15) 50%
+    rgba(22, 22, 31, 0) 50%, 
+    rgba(0, 0, 0, 0.12) 50%
   );
-  background-size: 100% 4px;
-  opacity: 0.25;
+  background-size: 100% 3px;
+  opacity: 0.28;
 }
 
-/* Subtle retro noise/grid background */
+/* Subtle vapor micro-grid */
 .retro-grid-bg {
   background-image: 
-    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.04) 1px, transparent 0);
-  background-size: 24px 24px;
+    radial-gradient(circle at 1px 1px, rgba(207, 165, 216, 0.04) 1px, transparent 0);
+  background-size: 20px 20px;
 }
 
 /* Blinking terminal cursor */
@@ -98,21 +104,21 @@ html {
 
 .terminal-cursor {
   display: inline-block;
-  width: 0.6em;
-  height: 1.15em;
-  background-color: var(--color-retro-amber);
+  width: 0.55em;
+  height: 1.1em;
+  background-color: #e78a4e;
   vertical-align: text-bottom;
-  animation: blink 1.1s infinite step-start;
+  animation: blink 1.2s infinite step-start;
 }
 
 /* Code block & typography enhancements */
 pre {
-  border: 1px solid var(--color-retro-border);
+  border: 1px solid #2e2e42;
   border-radius: 4px;
   padding: 1rem;
   overflow-x: auto;
-  font-size: 0.875rem;
-  background-color: #08090b !important;
+  font-size: 0.85rem;
+  background-color: #12121a !important;
 }
 
 code {
@@ -121,21 +127,21 @@ code {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0c0e12;
+  background: #16161f;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #232b3b;
+  background: #2e2e42;
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #37435c;
+  background: #44445f;
 }
 
 /* Reduced motion preference */

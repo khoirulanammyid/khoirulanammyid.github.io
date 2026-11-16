@@ -2,34 +2,34 @@
 import { cvData } from '../data/cv';
 ---
 
-<section id="skills" class="py-12 border-b border-[#232b3b]">
+<section id="skills" class="py-12 border-b border-[#2e2e42]">
   <div class="mb-8">
-    <div class="flex items-center space-x-2 text-xs font-mono text-[#e5983b] uppercase tracking-wider mb-1">
-      <span>// 04. CAPABILITIES_MATRIX</span>
+    <div class="flex items-center space-x-2 text-xs font-mono text-[#e78a4e] uppercase tracking-wider mb-1">
+      <span>// TOOLBOX</span>
     </div>
-    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#e6edf3]">
-      Skills &amp; Technical Stacks
+    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#ece2d0]">
+      Skills &amp; Technologies
     </h2>
-    <p class="font-mono text-xs text-[#8b949e] mt-2">
-      Categorized technical proficiencies, systems administration tools, and runtime ecosystems.
+    <p class="font-mono text-xs text-[#9e958a] mt-2">
+      Daily drivers, systems administration tools, and runtime ecosystems.
     </p>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     {cvData.skills.map((cat, idx) => (
-      <div class="bg-[#131720] border border-[#232b3b] hover:border-[#37435c] rounded p-4 space-y-3 transition-colors">
-        <div class="flex items-center justify-between border-b border-[#232b3b] pb-2">
-          <div class="font-mono text-xs text-[#e5983b] font-semibold flex items-center space-x-1.5">
-            <span class="text-[#38bdf8]">#0{idx + 1}</span>
+      <div class="bg-[#1e1e2b] border border-[#2e2e42] hover:border-[#44445f] rounded p-4 space-y-3 transition-colors">
+        <div class="flex items-center justify-between border-b border-[#2e2e42] pb-2">
+          <div class="font-mono text-xs text-[#f29e82] font-semibold flex items-center space-x-1.5">
+            <span class="text-[#7daea3]">#0{idx + 1}</span>
             <span>{cat.title}</span>
           </div>
-          <span class="text-[10px] font-mono text-[#4b5563]">{cat.skills.length} pkgs</span>
+          <span class="text-[10px] font-mono text-[#5c554e]">{cat.skills.length} items</span>
         </div>
 
         <ul class="space-y-1.5 font-mono text-xs">
           {cat.skills.map((skill) => (
-            <li class="flex items-center space-x-2 text-[#8b949e] hover:text-[#e6edf3] transition-colors">
-              <span class="text-[#10b981] select-none text-[10px]">■</span>
+            <li class="flex items-center space-x-2 text-[#9e958a] hover:text-[#ece2d0] transition-colors">
+              <span class="text-[#8ec07c] select-none text-[10px]">■</span>
               <span>{skill}</span>
             </li>
           ))}

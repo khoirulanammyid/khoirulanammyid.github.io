@@ -2,29 +2,29 @@
 import { cvData } from '../data/cv';
 ---
 
-<section id="education" class="py-12 border-b border-[#232b3b]">
+<section id="education" class="py-12 border-b border-[#2e2e42]">
   <div class="mb-8">
-    <div class="flex items-center space-x-2 text-xs font-mono text-[#e5983b] uppercase tracking-wider mb-1">
-      <span>// 05. ACADEMIC_CREDENTIALS</span>
+    <div class="flex items-center space-x-2 text-xs font-mono text-[#e78a4e] uppercase tracking-wider mb-1">
+      <span>// EDUCATION</span>
     </div>
-    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#e6edf3]">
-      Education &amp; Background
+    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#ece2d0]">
+      Academic Background
     </h2>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     {cvData.education.map((edu) => (
-      <div class="bg-[#131720] border border-[#232b3b] hover:border-[#37435c] rounded p-5 space-y-2">
+      <div class="bg-[#1e1e2b] border border-[#2e2e42] hover:border-[#44445f] rounded p-5 space-y-2">
         <div class="flex items-start justify-between">
-          <span class="font-mono text-[10px] text-[#38bdf8] uppercase">[DEGREE_PROGRAM]</span>
-          <span class="font-mono text-xs text-[#8b949e] bg-[#0c0e12] px-2 py-0.5 rounded border border-[#232b3b]">
+          <span class="font-mono text-[10px] text-[#cfa5d8] uppercase">[ACADEMIC]</span>
+          <span class="font-mono text-xs text-[#9e958a] bg-[#16161f] px-2 py-0.5 rounded border border-[#2e2e42]">
             {edu.period}
           </span>
         </div>
-        <h3 class="font-serif text-lg font-bold text-[#e6edf3]">{edu.degree}</h3>
-        <p class="font-mono text-xs text-[#e5983b]">{edu.institution}</p>
+        <h3 class="font-serif text-lg font-bold text-[#ece2d0]">{edu.degree}</h3>
+        <p class="font-mono text-xs text-[#f29e82]">{edu.institution}</p>
         {edu.details && (
-          <p class="font-mono text-xs text-[#8b949e] pt-1">
+          <p class="font-mono text-xs text-[#9e958a] pt-1">
             &gt; {edu.details}
           </p>
         )}

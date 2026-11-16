@@ -30,37 +30,37 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
 >
   <article class="max-w-3xl mx-auto space-y-8">
     <!-- Breadcrumb / Back Navigation -->
-    <div class="font-mono text-xs text-[#8b949e] flex items-center justify-between pb-4 border-b border-[#232b3b]">
+    <div class="font-mono text-xs text-[#9e958a] flex items-center justify-between pb-4 border-b border-[#2e2e42]">
       <a
         href="/blog"
-        class="inline-flex items-center space-x-1.5 text-[#38bdf8] hover:text-[#e5983b] transition-colors"
+        class="inline-flex items-center space-x-1.5 text-[#7daea3] hover:text-[#f29e82] transition-colors"
       >
         <span>&larr;</span>
-        <span>cd .. / return to blog</span>
+        <span>cd .. / back to blog</span>
       </a>
-      <span class="text-[#4b5563]">FORMAT: MARKDOWN</span>
+      <span class="text-[#5c554e]">MARKDOWN</span>
     </div>
 
     <!-- Article Header -->
     <header class="space-y-4">
-      <div class="flex flex-wrap items-center gap-2 text-xs font-mono text-[#8b949e]">
-        <span class="text-[#e5983b]">&gt;</span>
+      <div class="flex flex-wrap items-center gap-2 text-xs font-mono text-[#9e958a]">
+        <span class="text-[#f29e82]">&gt;</span>
         <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
         <span>·</span>
         <span>By {post.data.author}</span>
       </div>
 
-      <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#e6edf3] leading-tight">
+      <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#ece2d0] leading-tight">
         {post.data.title}
       </h1>
 
-      <p class="font-serif italic text-base sm:text-lg text-[#8b949e] leading-relaxed">
+      <p class="font-serif italic text-base sm:text-lg text-[#9e958a] leading-relaxed">
         {post.data.description}
       </p>
 
       <div class="flex flex-wrap gap-1.5 pt-2">
         {post.data.tags.map((tag) => (
-          <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#131720] border border-[#232b3b] text-[#8b949e]">
+          <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#1e1e2b] border border-[#2e2e42] text-[#9e958a]">
             #{tag}
           </span>
         ))}
@@ -68,28 +68,28 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     </header>
 
     <!-- Article Body with Serif Body & Monospace Accents -->
-    <div class="prose prose-invert max-w-none font-serif text-[#d1d5db] leading-relaxed space-y-6 pt-4 border-t border-[#232b3b]/60">
+    <div class="prose prose-invert max-w-none font-serif text-[#d6cdbe] leading-relaxed space-y-6 pt-4 border-t border-[#2e2e42]/60">
       <Content />
     </div>
 
     <!-- Post-article Terminal Box -->
-    <div class="mt-12 p-6 bg-[#131720] border border-[#232b3b] rounded-lg font-mono text-xs space-y-3">
-      <div class="flex items-center justify-between text-[#8b949e] pb-2 border-b border-[#232b3b]">
-        <span class="text-[#e5983b] font-bold">// ABOUT_THE_AUTHOR</span>
-        <span>NODE: KHOIRUL ANAM</span>
+    <div class="mt-12 p-6 bg-[#1e1e2b] border border-[#2e2e42] rounded-lg font-mono text-xs space-y-3">
+      <div class="flex items-center justify-between text-[#9e958a] pb-2 border-b border-[#2e2e42]">
+        <span class="text-[#e78a4e] font-bold">// AUTHOR</span>
+        <span>KHOIRUL ANAM</span>
       </div>
-      <p class="text-[#8b949e] leading-relaxed font-sans">
-        Khoirul Anam is an Infrastructure Engineer and Backend Systems Architect specializing in Linux administration, high-availability Proxmox virtualization, mirrored ZFS architectures, and enterprise Laravel development.
+      <p class="text-[#9e958a] leading-relaxed font-sans">
+        Khoirul Anam is an Infrastructure Engineer and Backend Developer specializing in Void Linux, high-availability Proxmox virtualization, mirrored ZFS pools, and enterprise Laravel development.
       </p>
-      <div class="pt-2 flex items-center justify-between text-[#38bdf8]">
-        <a href="https://linkedin.com/in/sangpencerah/" target="_blank" rel="noopener noreferrer" class="hover:text-[#e5983b] transition-colors">
-          [LinkedIn Profile]
+      <div class="pt-2 flex items-center justify-between text-[#7daea3]">
+        <a href="https://linkedin.com/in/sangpencerah/" target="_blank" rel="noopener noreferrer" class="hover:text-[#f29e82] transition-colors">
+          [LinkedIn]
         </a>
-        <a href="https://github.com/akunnyaanam" target="_blank" rel="noopener noreferrer" class="hover:text-[#e5983b] transition-colors">
-          [Source Code]
+        <a href="https://github.com/khoirulanammyid" target="_blank" rel="noopener noreferrer" class="hover:text-[#f29e82] transition-colors">
+          [GitHub]
         </a>
-        <a href="/#contact" class="hover:text-[#e5983b] transition-colors">
-          [Transmit Inquiry]
+        <a href="/#contact" class="hover:text-[#f29e82] transition-colors">
+          [Contact]
         </a>
       </div>
     </div>
