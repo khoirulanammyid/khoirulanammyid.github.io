@@ -71,7 +71,7 @@ export const cvData: CVData = {
     email: "akunnyakhoirulanam@gmail.com",
     phone: "+62 831-9523-4531",
     whatsappUrl: "https://wa.me/+6283195234531",
-    linkedin: "https://linkedin.com/in/sangpencerah/",
+    linkedin: "https://linkedin.com/in/khoirulanammyid/",
     github: "https://github.com/khoirulanammyid",
     website: "https://khoirulanam.my.id",
   },
