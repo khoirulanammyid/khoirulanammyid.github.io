@@ -1,0 +1,82 @@
+---
+import { cvData } from '../data/cv';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="mt-16 border-t border-[#232b3b] bg-[#0c0e12] relative z-10 text-xs text-[#8b949e]">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <!-- ASCII terminal divider -->
+    <div class="font-mono text-[#37435c] text-[10px] sm:text-xs select-none overflow-hidden whitespace-nowrap mb-8 text-center">
+      +--[ SYS.INFO: PROXMOX // ZFS // LARAVEL // ARCH LINUX // ASTRO V5 ]--+
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <!-- Col 1: Identity & Coordinates -->
+      <div class="space-y-2">
+        <div class="font-mono text-sm text-[#e6edf3] font-bold flex items-center space-x-1.5">
+          <span class="text-[#e5983b]">&gt;</span>
+          <span>{cvData.name}</span>
+        </div>
+        <p class="text-xs text-[#8b949e] leading-relaxed">
+          {cvData.title}. Based in Ambarawa / Semarang, Central Java. Focused on resilient bare-metal infrastructure, virtualization, and robust backend engineering.
+        </p>
+      </div>
+
+      <!-- Col 2: Fast Navigation / Sections -->
+      <div class="space-y-2">
+        <div class="font-mono text-xs uppercase tracking-wider text-[#e6edf3] font-semibold">
+          // directory index
+        </div>
+        <ul class="space-y-1 font-mono text-xs">
+          <li><a href="/#about" class="hover:text-[#e5983b] transition-colors">01. ~ / about</a></li>
+          <li><a href="/#experience" class="hover:text-[#e5983b] transition-colors">02. ~ / experience</a></li>
+          <li><a href="/#projects" class="hover:text-[#e5983b] transition-colors">03. ~ / projects</a></li>
+          <li><a href="/#skills" class="hover:text-[#e5983b] transition-colors">04. ~ / skills</a></li>
+          <li><a href="/blog" class="hover:text-[#e5983b] transition-colors">05. ~ / technical-log (blog)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Network & External Nodes -->
+      <div class="space-y-2">
+        <div class="font-mono text-xs uppercase tracking-wider text-[#e6edf3] font-semibold">
+          // endpoints & links
+        </div>
+        <ul class="space-y-1 font-mono text-xs">
+          <li>
+            <a href={cvData.contact.github} target="_blank" rel="noopener noreferrer" class="hover:text-[#e5983b] transition-colors flex items-center space-x-1">
+              <span>gh :</span> <span class="underline">github.com/akunnyaanam</span>
+            </a>
+          </li>
+          <li>
+            <a href={cvData.contact.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-[#e5983b] transition-colors flex items-center space-x-1">
+              <span>in :</span> <span class="underline">linkedin.com/in/sangpencerah</span>
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${cvData.contact.email}`} class="hover:text-[#e5983b] transition-colors flex items-center space-x-1">
+              <span>em :</span> <span class="underline">{cvData.contact.email}</span>
+            </a>
+          </li>
+          <li>
+            <a href="/sitemap-index.xml" class="hover:text-[#e5983b] transition-colors flex items-center space-x-1">
+              <span>map:</span> <span class="underline">sitemap-index.xml</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom baseline -->
+    <div class="pt-6 border-t border-[#232b3b]/60 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#4b5563] space-y-2 sm:space-y-0">
+      <div>
+        &copy; {currentYear} {cvData.name}. No trackers. Zero bloat. 100% Static & Pure.
+      </div>
+      <div class="font-mono flex items-center space-x-3">
+        <span>LOC: IDN (GMT+7)</span>
+        <span>•</span>
+        <span class="text-[#10b981]">SYSTEM: OPTIMAL</span>
+      </div>
+    </div>
+  </div>
+</footer>

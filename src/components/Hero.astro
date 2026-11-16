@@ -1,0 +1,129 @@
+---
+import { cvData } from '../data/cv';
+---
+
+<section id="about" class="pt-6 pb-12 sm:pb-16 border-b border-[#232b3b]">
+  <!-- Terminal Prompt Bar -->
+  <div class="mb-6 font-mono text-xs text-[#8b949e] bg-[#131720] border border-[#232b3b] rounded p-3 flex items-center justify-between overflow-x-auto">
+    <div class="flex items-center space-x-2">
+      <span class="text-[#10b981]">●</span>
+      <span class="text-[#e5983b]">khoirul@archlinux</span>
+      <span>:</span>
+      <span class="text-[#38bdf8]">~/profile</span>
+      <span>$</span>
+      <span class="text-[#e6edf3]">whoami &amp;&amp; cat summary.txt</span>
+    </div>
+    <span class="hidden sm:inline text-[10px] text-[#4b5563] tracking-widest uppercase">TTY1 // 1980s-SPEC</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <div class="lg:col-span-8 space-y-6">
+      <div>
+        <div class="inline-block text-xs uppercase tracking-widest text-[#e5983b] font-mono mb-2 px-2 py-0.5 border border-[#e5983b]/30 bg-[#e5983b]/5 rounded">
+          // SYS_ADMIN // FULLSTACK_ARCHITECT
+        </div>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#e6edf3] leading-[1.1]">
+          {cvData.name}
+        </h1>
+        <p class="mt-3 text-lg sm:text-xl text-[#e5983b] font-serif italic">
+          {cvData.title}
+        </p>
+      </div>
+
+      <p class="text-sm sm:text-base text-[#8b949e] leading-relaxed font-sans font-normal">
+        {cvData.summary}
+      </p>
+
+      <!-- Key Metrics / Achievements Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+        <div class="bg-[#131720] border border-[#232b3b] p-3 rounded">
+          <div class="font-mono text-xl sm:text-2xl font-bold text-[#10b981]">80%</div>
+          <div class="font-mono text-[11px] text-[#8b949e] uppercase mt-0.5">Faster UI Latency</div>
+        </div>
+        <div class="bg-[#131720] border border-[#232b3b] p-3 rounded">
+          <div class="font-mono text-xl sm:text-2xl font-bold text-[#38bdf8]">99.5%</div>
+          <div class="font-mono text-[11px] text-[#8b949e] uppercase mt-0.5">Inventory Accuracy</div>
+        </div>
+        <div class="bg-[#131720] border border-[#232b3b] p-3 rounded">
+          <div class="font-mono text-xl sm:text-2xl font-bold text-[#e5983b]">0%</div>
+          <div class="font-mono text-[11px] text-[#8b949e] uppercase mt-0.5">Migration Data Loss</div>
+        </div>
+        <div class="bg-[#131720] border border-[#232b3b] p-3 rounded">
+          <div class="font-mono text-xl sm:text-2xl font-bold text-[#e6edf3]">60+</div>
+          <div class="font-mono text-[11px] text-[#8b949e] uppercase mt-0.5">HA Cloud Users</div>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex flex-wrap items-center gap-3 pt-2">
+        <a
+          href="#projects"
+          class="px-4 py-2 text-xs font-mono font-semibold bg-[#e5983b] text-[#0c0e12] rounded hover:bg-[#f59e0b] transition-colors flex items-center space-x-1.5 shadow-sm"
+        >
+          <span>View Featured Projects</span>
+          <span>↓</span>
+        </a>
+        <a
+          href="/blog"
+          class="px-4 py-2 text-xs font-mono font-medium text-[#e6edf3] bg-[#131720] border border-[#232b3b] hover:border-[#37435c] rounded hover:text-[#e5983b] transition-colors flex items-center space-x-1.5"
+        >
+          <span>Technical Articles</span>
+          <span>→</span>
+        </a>
+        <a
+          href="#contact"
+          class="px-4 py-2 text-xs font-mono text-[#8b949e] hover:text-[#e6edf3] transition-colors"
+        >
+          [ Connect / Terminal ]
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Side: Retro System Monitor Card -->
+    <div class="lg:col-span-4 bg-[#131720] border border-[#232b3b] rounded p-4 space-y-3 font-mono text-xs">
+      <div class="flex items-center justify-between pb-2 border-b border-[#232b3b] text-[#8b949e]">
+        <span class="text-[#e5983b] font-semibold">// NODE_SPEC</span>
+        <span>ID: ANAM-SRV-01</span>
+      </div>
+
+      <div class="space-y-1.5 text-[11px]">
+        <div class="flex justify-between">
+          <span class="text-[#8b949e]">PRIMARY OS:</span>
+          <span class="text-[#e6edf3]">Arch / Debian Linux</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-[#8b949e]">VIRTUALIZATION:</span>
+          <span class="text-[#38bdf8]">Proxmox VE + ZFS</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-[#8b949e]">STACK:</span>
+          <span class="text-[#e6edf3]">Laravel / Vue / Docker</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-[#8b949e]">CORE PHILOSOPHY:</span>
+          <span class="text-[#10b981]">Reliability &amp; Integrity</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-[#8b949e]">LOCATION:</span>
+          <span class="text-[#e6edf3]">Semarang, ID (GMT+7)</span>
+        </div>
+      </div>
+
+      <div class="pt-2 border-t border-[#232b3b] text-[10px] text-[#4b5563]">
+        <p>REPRESENTATIVE LOG: <br /><span class="text-[#8b949e]">&gt; Zero loss data migration. Proxmox high-availability. Open source leadership.</span></p>
+      </div>
+
+      <div class="pt-2 border-t border-[#232b3b] flex items-center justify-between text-xs">
+        <a href={cvData.contact.github} target="_blank" rel="noopener noreferrer" class="text-[#8b949e] hover:text-[#e5983b] transition-colors">
+          [GitHub]
+        </a>
+        <a href={cvData.contact.linkedin} target="_blank" rel="noopener noreferrer" class="text-[#8b949e] hover:text-[#e5983b] transition-colors">
+          [LinkedIn]
+        </a>
+        <a href={`mailto:${cvData.contact.email}`} class="text-[#8b949e] hover:text-[#e5983b] transition-colors">
+          [Email]
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

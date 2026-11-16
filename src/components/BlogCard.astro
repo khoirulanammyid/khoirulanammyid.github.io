@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: '2-digit'
+}).format(post.data.pubDate);
+---
+
+<article class="group bg-[#131720] border border-[#232b3b] hover:border-[#37435c] rounded p-5 transition-all duration-150">
+  <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+    <div class="flex items-center space-x-2 text-[11px] font-mono text-[#8b949e]">
+      <span class="text-[#e5983b]">&gt;</span>
+      <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+      <span>·</span>
+      <span>{post.data.author}</span>
+    </div>
+
+    {post.data.featured && (
+      <span class="text-[10px] font-mono uppercase text-[#e5983b] bg-[#e5983b]/10 border border-[#e5983b]/30 px-1.5 py-0.5 rounded self-start sm:self-auto">
+        Featured
+      </span>
+    )}
+  </div>
+
+  <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#e6edf3] group-hover:text-[#e5983b] transition-colors leading-snug">
+    <a href={`/blog/${post.id}`}>
+      {post.data.title}
+    </a>
+  </h3>
+
+  <p class="mt-2 text-xs sm:text-sm text-[#8b949e] font-sans leading-relaxed">
+    {post.data.description}
+  </p>
+
+  <div class="mt-4 pt-3 border-t border-[#232b3b]/60 flex flex-wrap items-center justify-between gap-2">
+    <div class="flex flex-wrap gap-1.5">
+      {post.data.tags.map((tag) => (
+        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[#0c0e12] border border-[#232b3b] text-[#8b949e]">
+          #{tag}
+        </span>
+      ))}
+    </div>
+
+    <a
+      href={`/blog/${post.id}`}
+      class="text-xs font-mono text-[#38bdf8] hover:text-[#e5983b] transition-colors inline-flex items-center space-x-1"
+    >
+      <span>read log</span>
+      <span>→</span>
+    </a>
+  </div>
+</article>

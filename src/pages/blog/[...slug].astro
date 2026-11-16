@@ -1,0 +1,97 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+}).format(post.data.pubDate);
+---
+
+<BaseLayout
+  title={`${post.data.title} | Khoirul Anam`}
+  description={post.data.description}
+  article={true}
+  pubDate={post.data.pubDate}
+  updatedDate={post.data.updatedDate}
+  tags={post.data.tags}
+>
+  <article class="max-w-3xl mx-auto space-y-8">
+    <!-- Breadcrumb / Back Navigation -->
+    <div class="font-mono text-xs text-[#8b949e] flex items-center justify-between pb-4 border-b border-[#232b3b]">
+      <a
+        href="/blog"
+        class="inline-flex items-center space-x-1.5 text-[#38bdf8] hover:text-[#e5983b] transition-colors"
+      >
+        <span>&larr;</span>
+        <span>cd .. / return to blog</span>
+      </a>
+      <span class="text-[#4b5563]">FORMAT: MARKDOWN</span>
+    </div>
+
+    <!-- Article Header -->
+    <header class="space-y-4">
+      <div class="flex flex-wrap items-center gap-2 text-xs font-mono text-[#8b949e]">
+        <span class="text-[#e5983b]">&gt;</span>
+        <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+        <span>·</span>
+        <span>By {post.data.author}</span>
+      </div>
+
+      <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#e6edf3] leading-tight">
+        {post.data.title}
+      </h1>
+
+      <p class="font-serif italic text-base sm:text-lg text-[#8b949e] leading-relaxed">
+        {post.data.description}
+      </p>
+
+      <div class="flex flex-wrap gap-1.5 pt-2">
+        {post.data.tags.map((tag) => (
+          <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#131720] border border-[#232b3b] text-[#8b949e]">
+            #{tag}
+          </span>
+        ))}
+      </div>
+    </header>
+
+    <!-- Article Body with Serif Body & Monospace Accents -->
+    <div class="prose prose-invert max-w-none font-serif text-[#d1d5db] leading-relaxed space-y-6 pt-4 border-t border-[#232b3b]/60">
+      <Content />
+    </div>
+
+    <!-- Post-article Terminal Box -->
+    <div class="mt-12 p-6 bg-[#131720] border border-[#232b3b] rounded-lg font-mono text-xs space-y-3">
+      <div class="flex items-center justify-between text-[#8b949e] pb-2 border-b border-[#232b3b]">
+        <span class="text-[#e5983b] font-bold">// ABOUT_THE_AUTHOR</span>
+        <span>NODE: KHOIRUL ANAM</span>
+      </div>
+      <p class="text-[#8b949e] leading-relaxed font-sans">
+        Khoirul Anam is an Infrastructure Engineer and Backend Systems Architect specializing in Linux administration, high-availability Proxmox virtualization, mirrored ZFS architectures, and enterprise Laravel development.
+      </p>
+      <div class="pt-2 flex items-center justify-between text-[#38bdf8]">
+        <a href="https://linkedin.com/in/sangpencerah/" target="_blank" rel="noopener noreferrer" class="hover:text-[#e5983b] transition-colors">
+          [LinkedIn Profile]
+        </a>
+        <a href="https://github.com/akunnyaanam" target="_blank" rel="noopener noreferrer" class="hover:text-[#e5983b] transition-colors">
+          [Source Code]
+        </a>
+        <a href="/#contact" class="hover:text-[#e5983b] transition-colors">
+          [Transmit Inquiry]
+        </a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

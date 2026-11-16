@@ -1,0 +1,149 @@
+@import "tailwindcss";
+@import "@fontsource/newsreader/400.css";
+@import "@fontsource/newsreader/500.css";
+@import "@fontsource/newsreader/600.css";
+@import "@fontsource/newsreader/700.css";
+@import "@fontsource/newsreader/400-italic.css";
+
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  src: url('/fonts/FantasqueSansMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  src: url('/fonts/FantasqueSansMono-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  src: url('/fonts/FantasqueSansMono-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  src: url('/fonts/FantasqueSansMono-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --font-mono: 'Fantasque Sans Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-serif: 'Newsreader', 'Charter', Georgia, Cambria, 'Times New Roman', Times, serif;
+
+  --color-retro-bg: #0c0e12;
+  --color-retro-surface: #131720;
+  --color-retro-surface-hover: #1a202c;
+  --color-retro-border: #232b3b;
+  --color-retro-border-bright: #37435c;
+  --color-retro-amber: #e5983b;
+  --color-retro-amber-bright: #f59e0b;
+  --color-retro-green: #10b981;
+  --color-retro-cyan: #38bdf8;
+  --color-retro-text: #e6edf3;
+  --color-retro-muted: #8b949e;
+  --color-retro-dim: #4b5563;
+}
+
+/* CRT and Retro scanline & grain effects */
+:root {
+  color-scheme: dark;
+}
+
+html {
+  font-family: var(--font-mono);
+  background-color: #0c0e12;
+  color: #e6edf3;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle retro scanlines (pure CSS, ultra lightweight) */
+.scanlines-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.15) 50%
+  );
+  background-size: 100% 4px;
+  opacity: 0.25;
+}
+
+/* Subtle retro noise/grid background */
+.retro-grid-bg {
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Blinking terminal cursor */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.15em;
+  background-color: var(--color-retro-amber);
+  vertical-align: text-bottom;
+  animation: blink 1.1s infinite step-start;
+}
+
+/* Code block & typography enhancements */
+pre {
+  border: 1px solid var(--color-retro-border);
+  border-radius: 4px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  background-color: #08090b !important;
+}
+
+code {
+  font-family: var(--font-mono);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0c0e12;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #232b3b;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #37435c;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

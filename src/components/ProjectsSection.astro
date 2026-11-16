@@ -1,0 +1,123 @@
+---
+import { cvData } from '../data/cv';
+---
+
+<section id="projects" class="py-12 border-b border-[#232b3b]">
+  <div class="mb-8">
+    <div class="flex items-center space-x-2 text-xs font-mono text-[#e5983b] uppercase tracking-wider mb-1">
+      <span>// 03. ENGINEERING_PORTFOLIO</span>
+    </div>
+    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#e6edf3]">
+      Selected Projects &amp; Architectures
+    </h2>
+    <p class="font-mono text-xs text-[#8b949e] mt-2">
+      Real-world implementations in server virtualization, operating system release engineering, enterprise migrations, and hardware modding.
+    </p>
+  </div>
+
+  <div class="space-y-10">
+    {cvData.projects.map((proj, idx) => (
+      <article class="bg-[#131720] border border-[#232b3b] hover:border-[#37435c] rounded-lg overflow-hidden transition-all duration-200">
+        <!-- Top Terminal Bar -->
+        <div class="px-5 py-3 border-b border-[#232b3b] bg-[#0c0e12]/60 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center space-x-2 text-xs font-mono">
+            <span class="text-[#e5983b] font-bold">[{idx + 1 < 10 ? `0${idx + 1}` : idx + 1}]</span>
+            <span class="text-[#38bdf8] uppercase">[{proj.category}]</span>
+            <span class="text-[#8b949e]">// {proj.context}</span>
+          </div>
+          <div class="text-[11px] font-mono text-[#10b981] bg-[#10b981]/10 px-2 py-0.5 rounded border border-[#10b981]/20">
+            ROLE: {proj.role}
+          </div>
+        </div>
+
+        <div class="p-5 sm:p-6 space-y-4">
+          <!-- Title & Subtitle -->
+          <div>
+            <h3 class="font-serif text-2xl font-bold text-[#e6edf3]">
+              {proj.title}
+            </h3>
+            {proj.subtitle && (
+              <p class="font-serif text-sm italic text-[#8b949e] mt-0.5">
+                {proj.subtitle}
+              </p>
+            )}
+          </div>
+
+          <!-- Summary -->
+          <p class="text-sm text-[#8b949e] leading-relaxed font-sans">
+            {proj.summary}
+          </p>
+
+          <!-- Impact Box -->
+          {proj.impact && (
+            <div class="bg-[#0c0e12] border-l-2 border-[#10b981] p-3 rounded-r text-xs font-mono text-[#e6edf3]">
+              <span class="text-[#10b981] font-bold block mb-1">&gt; VERIFIED IMPACT &amp; METRICS:</span>
+              <p class="text-[#8b949e] font-sans leading-relaxed">{proj.impact}</p>
+            </div>
+          )}
+
+          <!-- Learnings -->
+          {proj.learnings && (
+            <div class="bg-[#0c0e12] border-l-2 border-[#38bdf8] p-3 rounded-r text-xs font-mono text-[#e6edf3]">
+              <span class="text-[#38bdf8] font-bold block mb-1">&gt; ARCHITECTURAL LEARNINGS:</span>
+              <p class="text-[#8b949e] font-sans leading-relaxed">{proj.learnings}</p>
+            </div>
+          )}
+
+          <!-- Project Images / Screenshots -->
+          {proj.images && proj.images.length > 0 && (
+            <div class="pt-2">
+              <div class="text-[11px] font-mono text-[#4b5563] uppercase mb-2">// SYSTEM SCREENSHOTS &amp; ARCHITECTURE DIAGRAMS</div>
+              <div class={`grid gap-3 ${proj.images.length > 1 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1'}`}>
+                {proj.images.map((imgSrc, imgIdx) => (
+                  <div class="border border-[#232b3b] rounded overflow-hidden bg-[#0c0e12] group">
+                    <img
+                      src={imgSrc}
+                      alt={`${proj.title} screenshot ${imgIdx + 1}`}
+                      loading="lazy"
+                      decoding="async"
+                      class="w-full h-auto object-cover max-h-72 transition-transform duration-300 group-hover:scale-[1.02]"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Tech Badges & External Links -->
+          <div class="pt-3 border-t border-[#232b3b]/60 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex flex-wrap items-center gap-1.5">
+              {proj.tech.map((t) => (
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#0c0e12] border border-[#232b3b] text-[#8b949e]">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            {proj.links && proj.links.length > 0 && (
+              <div class="flex items-center space-x-2">
+                {proj.links.map((link) => (
+                  link.url.startsWith('http') ? (
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center space-x-1 text-xs font-mono text-[#e5983b] hover:text-[#f59e0b] hover:underline"
+                    >
+                      <span>{link.label}</span>
+                      <span>↗</span>
+                    </a>
+                  ) : (
+                    <span class="text-[11px] font-mono text-[#4b5563] italic">
+                      [{link.label}]
+                    </span>
+                  )
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
