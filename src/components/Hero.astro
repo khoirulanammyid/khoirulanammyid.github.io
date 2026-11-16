@@ -2,34 +2,10 @@
 import { cvData } from '../data/cv';
 ---
 
-<section id="about" class="pt-6 pb-12 sm:pb-16 border-b border-[#2e2e42]">
-  <div class="grid grid-cols-1 sm:grid-cols-12 gap-8 items-center">
-    <!-- Profile Photo with Retro 80s/90s Pastel Border Frame -->
-    <div class="sm:col-span-4 lg:col-span-3 flex justify-start sm:justify-center">
-      <div class="relative group">
-        <!-- Subtle pastel vapor frame glow -->
-        <div class="absolute -inset-0.5 bg-gradient-to-r from-[#e78a4e]/30 via-[#cfa5d8]/30 to-[#7daea3]/30 rounded-lg blur-xs opacity-75 group-hover:opacity-100 transition duration-300"></div>
-        
-        <div class="relative p-1.5 bg-[#1e1e2b] border border-[#44445f] rounded-lg shadow-lg">
-          <img
-            src="/photos/profile.webp"
-            alt="Khoirul Anam"
-            width="800"
-            height="1068"
-            loading="eager"
-            decoding="async"
-            class="w-36 sm:w-44 lg:w-48 h-auto object-cover rounded filter contrast-[1.02] brightness-[0.98]"
-          />
-          <div class="mt-1.5 pt-1 border-t border-[#2e2e42] flex items-center justify-between text-[10px] font-mono text-[#9e958a]">
-            <span>[avatar.webp]</span>
-            <span class="text-[#8ec07c]">online</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
+<section id="about" class="pt-6 pb-12 sm:pb-16 border-b border-[#2e2e42] relative overflow-hidden">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
     <!-- Main Headline & Description -->
-    <div class="sm:col-span-8 lg:col-span-9 space-y-5">
+    <div class="md:col-span-7 lg:col-span-8 space-y-5 order-2 md:order-1">
       <div>
         <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#ece2d0] leading-[1.15]">
           {cvData.name}
@@ -84,5 +60,31 @@ import { cvData } from '../data/cv';
         </a>
       </div>
     </div>
+
+    <!-- Blended Profile Photo (Dissolving smoothly into the background) -->
+    <div class="md:col-span-5 lg:col-span-4 flex justify-center md:justify-end order-1 md:order-2">
+      <div class="relative w-48 sm:w-56 lg:w-64 max-w-full">
+        <!-- Ambient atmospheric aura behind the portrait -->
+        <div class="absolute -inset-4 bg-gradient-to-tr from-[#e78a4e]/20 via-[#cfa5d8]/15 to-[#7daea3]/20 rounded-full blur-2xl pointer-events-none"></div>
+
+        <img
+          src="/photos/profile.webp"
+          alt="Khoirul Anam"
+          width="800"
+          height="1068"
+          loading="eager"
+          decoding="async"
+          class="w-full h-auto object-cover profile-blend relative z-10 filter contrast-[1.04] brightness-[0.98]"
+        />
+      </div>
+    </div>
   </div>
 </section>
+
+<style>
+  .profile-blend {
+    /* Seamless radial vignette fading all edges softly into the hero background */
+    -webkit-mask-image: radial-gradient(ellipse 85% 82% at 50% 40%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 80%);
+    mask-image: radial-gradient(ellipse 85% 82% at 50% 40%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 80%);
+  }
+</style>
