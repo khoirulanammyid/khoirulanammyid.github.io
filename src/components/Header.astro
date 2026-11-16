@@ -6,8 +6,8 @@ const navItems = [
   { label: "experience", href: "/#experience", sectionId: "experience" },
   { label: "projects", href: "/#projects", sectionId: "projects" },
   { label: "skills", href: "/#skills", sectionId: "skills" },
-  { label: "blog", href: "/blog", sectionId: "blog" },
   { label: "contact", href: "/#contact", sectionId: "contact" },
+  { label: "blog", href: "/blog", sectionId: "blog" },
 ];
 ---
 
@@ -81,10 +81,6 @@ const navItems = [
           </a>
         );
       })}
-      <div class="pt-2 border-t border-[#2e2e42]/60 px-3 flex items-center justify-between text-xs text-[#9e958a]">
-        <span>SYS: VOID LINUX</span>
-        <span class="text-[#8ec07c]">ONLINE</span>
-      </div>
     </div>
   </div>
 </header>
@@ -144,7 +140,7 @@ const navItems = [
       const documentHeight = document.documentElement.scrollHeight;
 
       // If near the bottom of the page, activate contact
-      if (scrollY + windowHeight >= documentHeight - 50) {
+      if (scrollY + windowHeight >= documentHeight - 60) {
         applyActiveStyles('contact');
         return;
       }

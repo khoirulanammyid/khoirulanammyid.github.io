@@ -6,11 +6,6 @@ const currentYear = new Date().getFullYear();
 
 <footer class="mt-16 border-t border-[#2e2e42] bg-[#16161f] relative z-10 text-xs text-[#9e958a]">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <!-- ASCII vapor divider -->
-    <div class="font-mono text-[#44445f] text-[10px] sm:text-xs select-none overflow-hidden whitespace-nowrap mb-8 text-center">
-      ░▒▓ VOID LINUX // ARCH // PROXMOX // ZFS // LARAVEL // VUE.JS // ASTRO V5 ▓▒░
-    </div>
-
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
       <!-- Col 1: Identity & Coordinates -->
       <div class="space-y-2">
@@ -33,6 +28,7 @@ const currentYear = new Date().getFullYear();
           <li><a href="/#experience" class="hover:text-[#f29e82] transition-colors">~ / experience</a></li>
           <li><a href="/#projects" class="hover:text-[#f29e82] transition-colors">~ / projects</a></li>
           <li><a href="/#skills" class="hover:text-[#f29e82] transition-colors">~ / skills</a></li>
+          <li><a href="/#contact" class="hover:text-[#f29e82] transition-colors">~ / contact</a></li>
           <li><a href="/blog" class="hover:text-[#f29e82] transition-colors">~ / blog (technical notes)</a></li>
         </ul>
       </div>
@@ -72,10 +68,8 @@ const currentYear = new Date().getFullYear();
       <div>
         &copy; {currentYear} {cvData.name}. When it's work, don't touch it
       </div>
-      <div class="font-mono flex items-center space-x-3">
+      <div class="font-mono">
         <span>LOC: IDN (GMT+7)</span>
-        <span>•</span>
-        <span class="text-[#8ec07c]">OS: VOID LINUX</span>
       </div>
     </div>
   </div>
